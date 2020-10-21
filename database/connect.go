@@ -3,6 +3,7 @@ package database
 import (
 	"fmt"
 	"go-bookshelf/config"
+	model "go-bookshelf/models"
 	"strconv"
 
 	"gorm.io/driver/postgres"
@@ -29,4 +30,6 @@ func ConnectDB() {
 	}
 
 	fmt.Println("Connection Opened to Database")
+	DB.AutoMigrate(&model.Author{})
+	fmt.Println("Database migrated")
 }
